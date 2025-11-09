@@ -13,7 +13,6 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-// ✅ Global error interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error: AxiosError<any>) => {
@@ -27,7 +26,6 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-// ✅ Updated: Now supports different types for request and response
 class APIClient<TResponse, TRequest = any> {
   endpoint: string;
 

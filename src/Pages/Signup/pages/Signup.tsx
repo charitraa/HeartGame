@@ -1,16 +1,21 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import heartPanel from "../../../assets/a.png";  // your image
 import useLogin from "../hooks/useSignup"; // import your mutation hook
 import type { SignupModel } from "../models/SignupModel";
+import { useMe } from "../../../hooks/useMe";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
-
-  // Use your mutation hook
+  const { data: currentUser } = useMe();
+  const navigate = useNavigate();
   const { mutate: signup, isPending } = useLogin();
+
+  useEffect(() => {
+    if (currentUser) navigate("/home");
+  }, [currentUser, navigate]);
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
