@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import videoBg from "../assets/1.mp4"; // background video
+import videoBg from "../../assets/1.mp4"; // background video
 
 export default function Home() {
   const navigate = useNavigate();
