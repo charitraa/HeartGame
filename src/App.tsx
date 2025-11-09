@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
+import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/pages/Signup";
 import Home from "./Pages/home";
 import Difficulty from "./Pages/Difficulty";
 import Mainpage from "./Pages/Mainpage";

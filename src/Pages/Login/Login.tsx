@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import heartPanel from "../assets/a.png";   // ← Your image
+import heartPanel from "../../assets/a.png";   // ← Your image
 
 export default function Login() {
   const [email, setEmail] = useState("");
