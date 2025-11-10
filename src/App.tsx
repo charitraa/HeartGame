@@ -2,9 +2,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Pages/Login/page/Login";
 import Signup from "./Pages/Signup/pages/Signup";
 import Home from "./Pages/home/home";
-import Difficulty from "./Pages/levels/Difficulty";
+import Difficulty from "./Pages/game/pages/Difficulty";
 import Mainpage from "./Pages/game/pages/Mainpage";
-import  ProtectedRoute  from "./Routes/ProtectedRoutes";
+import ProtectedRoute from "./Routes/ProtectedRoutes";
+import HistoryPage from "./Pages/history/pages/History";
 
 export default function App() {
   return (
@@ -31,10 +32,18 @@ export default function App() {
         }
       />
       <Route
-        path="/main"
+        path="/main/:level"
         element={
           <ProtectedRoute>
             <Mainpage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <ProtectedRoute>
+            <HistoryPage />
           </ProtectedRoute>
         }
       />

@@ -45,7 +45,7 @@ class APIClient<TResponse, TRequest = any> {
     return response.data;
   };
 
-  post = async (data: TRequest, params?: any, config?: AxiosRequestConfig) => {
+  post = async (data?: TRequest, params?: any, config?: AxiosRequestConfig) => {
     const url = params ? `${this.endpoint}/${params}` : this.endpoint;
     const response = await axiosInstance.post<TResponse>(url, data, config);
     return response.data;

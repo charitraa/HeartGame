@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import type { LoginModel, LoginResponseModel } from "../models/LoginModel";
 import { LoginServices } from "../services/LoginServices";
 import { useContext } from "react";
 import { AppContext } from "../../../context/ContextApp";
-import { LOGIN_CACHE_KEY } from "../../../constants";
 
 const useLogin = () => {
   const appContext = useContext(AppContext);
@@ -13,13 +12,13 @@ const useLogin = () => {
   }
 
   const { showToast } = appContext;
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   return useMutation<LoginResponseModel, Error, LoginModel>({
     mutationFn: (user: LoginModel) => LoginServices.post(user),
     onSuccess: (data: LoginResponseModel) => {
       if (data?.access) {
-        queryClient.invalidateQueries({ queryKey: [LOGIN_CACHE_KEY] });
+        // queryClient.invalidateQueries({ queryKey: [LOGIN_CACHE_KEY] });
 
         showToast(data.message || "Login successful!", "success");
       } else {
