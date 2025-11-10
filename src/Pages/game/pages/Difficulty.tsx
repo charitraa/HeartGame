@@ -27,7 +27,7 @@ export default function Difficulty() {
           <div className="text-center">
             <span className="text-5xl mb-4 block animate-bounce">🩷</span>
             <div className="text-4xl mb-2">Easy</div>
-            <div className="text-xl opacity-80">40 seconds</div>
+            <div className="text-xl opacity-80">15 seconds</div>
           </div>
         </button>
 
@@ -38,7 +38,7 @@ export default function Difficulty() {
           <div className="text-center">
             <span className="text-5xl mb-4 block animate-bounce">💛</span>
             <div className="text-4xl mb-2">Medium</div>
-            <div className="text-xl opacity-80">20 seconds</div>
+            <div className="text-xl opacity-80">10 seconds</div>
           </div>
         </button>
 
@@ -49,7 +49,7 @@ export default function Difficulty() {
           <div className="text-center">
             <span className="text-5xl mb-4 block animate-bounce">💔</span>
             <div className="text-4xl mb-2">Hard</div>
-            <div className="text-xl opacity-80">7 seconds</div>
+            <div className="text-xl opacity-80">5 seconds</div>
           </div>
         </button>
       </div>
