@@ -114,8 +114,10 @@ npm run preview
 
 ## Screenshots
 
-![Game Lobby](/screenshots/lobby.png)
-![Gameplay](/screenshots/gameplay.png)
+![Gameplay](https://github.com/charitraa/HeartGame/blob/main/public/screenshots/Screenshot_20251112_125234.png)
+![Gameplay](https://github.com/charitraa/HeartGame/blob/main/public/screenshots/game.png)
+![Gameplay](https://github.com/charitraa/HeartGame/blob/main/public/screenshots/history.png)
+
 
 ---
 
