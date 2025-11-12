@@ -1,73 +1,192 @@
-# React + TypeScript + Vite
+# HeartGame
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**HeartGame** is a **real-time multiplayer card game** built with **React**, **TypeScript**, and **Vite**. It connects to the **[HeartServer](https://github.com/charitraa/HeartServer)** Django REST API to enable secure gameplay, user authentication, and live game sessions.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5%2B-blue)
+![Vite](https://img.shields.io/badge/Vite-5%2B-purple)
+![JWT](https://img.shields.io/badge/JWT-Auth-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Real-time Multiplayer** via REST API polling & WebSocket-ready  
+- **JWT Authentication** (Login, Register, Token Refresh)  
+- **Game Lobby** – Create or join games   
+- **Type Safety** with TypeScript  
+- **Fast Development** with Vite + HMR  
+- **Modular Architecture** (`src/components`, `src/api`, `src/hooks`)  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Technology       | Version |
+|------------------|----------|
+| React            | 18+      |
+| TypeScript       | 5+       |
+| Vite             | 5+       |
+| Tailwind CSS     | 3+       |
+| Axios            | Latest   |
+| React Router     | 6+       |
+| Zustand / Context| —        |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+```
+HeartGame/
+├── public/              # Static assets
+│   └── index.html
+├── src/
+│   ├── api/             # API calls (axios instance, endpoints)
+│   ├── components/      # Reusable UI components
+│   ├── hooks/           # Custom React hooks
+│   ├── pages/           # Route pages (Login, Lobby, Game)
+│   ├── store/           # State management (Zustand/Context)
+│   ├── types/           # TypeScript interfaces
+│   ├── utils/           # Helper functions
+│   └── App.tsx
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md            # You are here!
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js **18+**
+- npm / yarn / pnpm
+- Running **[HeartServer](https://github.com/charitraa/HeartServer)** backend
+
+---
+
+## Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/charitraa/HeartGame.git
+cd HeartGame
 ```
+
+### 2. Install Dependencies
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 3. Environment Variables
+Create a `.env` file in the root:
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
+VITE_WS_URL=ws://127.0.0.1:8000/ws
+```
+> Ensure **HeartServer** is running at `http://127.0.0.1:8000`
+
+### 4. Start Development Server
+```bash
+npm run dev
+# or
+vite
+```
+Visit [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## Build for Production
+```bash
+npm run build
+```
+Preview the production build:
+```bash
+npm run preview
+```
+
+---
+
+## Screenshots
+
+![Game Lobby](/screenshots/lobby.png)
+![Gameplay](/screenshots/gameplay.png)
+
+---
+
+## Scripts
+
+| Command | Description |
+|----------|--------------|
+| `npm run dev` | Start dev server with HMR |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format code with Prettier |
+
+---
+
+## Testing
+Use **React Testing Library** or **Vitest** for unit tests.
+```bash
+npm run test
+```
+
+---
+
+## Deployment
+Deploy easily on **Vercel** or **Netlify**:
+
+1. Push to GitHub  
+2. Connect repo on hosting platform  
+3. Add environment variable:  
+   `VITE_API_BASE_URL=https://your-heartserver.com/api`  
+
+---
+
+## Contributing
+1. Fork the repo  
+2. Create a branch:  
+   ```bash
+   git checkout -b feature/amazing-ui
+   ```
+3. Commit changes:  
+   ```bash
+   git commit -m "Add amazing UI feature"
+   ```
+4. Push and open a Pull Request  
+
+---
+
+## Recent Updates
+- ✅ 2 days ago – Integrated all API endpoints  
+- ✅ 4 days ago – Project setup with Vite + TypeScript  
+- ✅ 4 days ago – Added .gitignore, ESLint, Prettier  
+
+---
+
+## Backend
+This project requires the **HeartServer** backend:  
+[https://github.com/charitraa/HeartServer](https://github.com/charitraa/HeartServer)
+
+---
+
+## License
+This project is licensed under the **MIT License** – see `LICENSE` for details.
+
+---
+
+## Contact
+**Maintainer:** [charitraa](https://github.com/charitraa)  
+**Game:** Hearts 
+**Backend:** HeartServer  
+**Live Demo:** Coming soon!  
+
+---
+
+🎮 *Let’s play Hearts!*
